@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/abdessaydi/ProjetWebSplitwise/issues"
   },
-  "homepage": "https://github.com/abdessaydi/ProjetWebSplitwise#readme"
+  "homepage": "https://github.com/abdessaydi/ProjetWebSplitwise#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.4.1",
+    "mongoose": "^4.3.1"
+  }
 }

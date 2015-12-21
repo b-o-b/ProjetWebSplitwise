@@ -1,0 +1,55 @@
+<div class="container">
+
+    <div class="row">
+        <form role="form" ng-submit="SignupController()">
+           
+                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                <div class="form-group">
+                    <label for="InputName">Enter Username</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="User.name" name="InputName" id="InputName" placeholder="Enter Name" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputName">Enter Fistname</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="User.first" name="InputName" id="InputName" placeholder="Enter Name" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputName">Enter Lastname</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control"  ng-model="User.last" name="InputName" id="InputName" placeholder="Enter Name" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Enter Email</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" ng-model="User.mail" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="PassWord">Enter Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" ng-model="User.pass" name="password" id="password" placeholder="Enter your password" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="PassWord">Confirm Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" name="cofirmpassword" id="password" placeholder="Confirm your password" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+               
+                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+        
+        </form>
+       
+    </div>
+</div>

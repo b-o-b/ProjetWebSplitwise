@@ -1,0 +1,28 @@
+{
+  "name": "mysplitwise",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "abdessamad essaydi"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "splitwise"
+  ],
+  "homepage": "https://github.com/abdessaydi/ProjetWebSplitwise",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/assets/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6",
+    "angular-ui-router": "~0.2.15",
+    "angular-resource": "~1.4.8"
+  }
+}

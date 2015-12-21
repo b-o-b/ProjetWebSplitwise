@@ -2,6 +2,6 @@
 	'use strict';
 
 	angular
-		.module('appModule', [])
+		.module('appModule', ['ui-rout'])
 
 })();

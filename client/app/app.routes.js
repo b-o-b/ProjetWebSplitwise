@@ -4,16 +4,15 @@
 
 	 angular
 		.module('appModule')
-		.config(['$stateProvide', '$urlRouterProvider', function($stateProvide,$urlRouterProvider){
-		.state('login', {
-      url: "/",
-      templateUrl: 'app/components/singnupView.html'
-      controller: 'signupController'
+		.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,$urlRouterProvider){
 
-    })	
-		})
+		$urlRouterProvider.otherwise('/');
 
-    
-
-
+		$stateProvider
+			.state('login', {
+				url: '/login',
+			    templateUrl: 'app/components/signup/signupView.html',
+			    controller: 'signupController'
+			})
+		}])
 })();

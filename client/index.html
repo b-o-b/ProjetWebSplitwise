@@ -2,19 +2,14 @@
     <!DOCTYPE html>
     <html>
     <head>
-      <!-- SCROLLS -->
-      <!-- load bootstrap and fontawesome via CDN -->
- 	
+    <title>SplitWise</title>
 
-      <!-- SPELLS -->
-      <!-- load angular and angular route via CDN -->
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-          <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-      <script src="script.js"></script>
+    <link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap-theme.min.css">
     </head>
     <body ng-app ="appModule" role="document">
-	    
-
+	<div ng-include="'app/shared/navbar/navbarView.html'" ng-controller ="NavbarController">
+	</div>    
         <!-- MAIN CONTENT AND INJECTED VIEWS -->
         <div ui-view></div>
 
@@ -23,9 +18,16 @@
     </body>
     <script src="assets/libs/angular/angular.min.js"></script>
 	<script src="assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="assets/libs/angular-resource/angular-resource.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/libs/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
-	
-	<script src="app/app.modules.js"></script>
+    <script src="app/app.modules.js"></script>
 	<script src="app/app.routes.js"></script>
+	<script src="app/shared/navbar/navbarController.js"></script>
+	<script src="app/components/signup/signupService.js"></script>
 	   
     </html>

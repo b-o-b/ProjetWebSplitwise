@@ -1,0 +1,209 @@
+<nav class="navbar navbar-default navbarApp" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button ng-if="!user" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <button ng-show="user" toggle-sidebar-menu class="navbar-brand hamburger-button">Show navigation</button>
+            <label class="navbar-brand">
+                SplitWise
+                <span ng-show="account !== undefined" class="hidden-xs">
+                    – {{ account.name }}
+                </span>
+            </label>
+        </div>
+        <div class="collapse navbar-collapse" id="collapse">
+            <ul ng-if="!user" class="nav navbar-nav navbar-right">
+                <li class="mr10 ml10">
+                    <button type="button" class="btn btn-mymoney" data-toggle="modal" data-target="#modal-login" style="margin-top:11px;">Login</button>
+                </li>
+                <li class="mr10 ml10">
+                    <button type="button" class="btn btn-mymoney" data-toggle="modal" data-target="#modal-signup" style="margin-top:11px;">Sign Up</button>
+                </li>
+            </ul>
+
+            <ul ng-show="user" class="nav navbar-nav pull-right">
+                <li  class="navbar-text" ng-if="$root.state !== 'ONLINE'">
+                    {{$root.state}}
+                </li>
+                <li ng-show="false">
+                    <select ng-model="initSelector" name="" id="">
+                        <option value="dataset_etienne.json">dataset_etienne.json</option>
+                        <option value="dataset_etienne_budget.json">dataset_etienne_budget.json</option>
+                        <option value="dataset_jordan.json">dataset_jordan.json</option>
+                        <option value="dataset_youssef.json">dataset_youssef.json</option>
+                    </select>
+                    <button class="navbar-btn btn btn-warning btn-xs" ng-click="initData()">Init</button >
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="modal fade" id="modal-signup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h1 class="modal-title">Sign Up</h1>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="center-block" style="max-width: 400px;">
+
+                    <a href="/auth/facebook" type="button" class="btn btn-lg btn-block facebook"><i class="fa fa-facebook-square"></i> <span>Sign up with Facebook</span></a>
+
+                    <a href="/auth/google" type="button" class="btn btn-lg btn-block google-p"><i class="fa fa-google-plus-square"></i> <span>Sign up with Google</span></a>
+                </div>
+
+                <div class="strike pt30">
+                    <span>OR</span>
+                </div>
+
+                <form class="nav" ng-submit="signUp()">
+                    <h2 class="text-center">Create an account</h2>
+                    <p class="text-center text-danger">{{error}}</p>
+                    <span>{{ hello }}</span>
+                    <div class="form-group">
+                        <label >Username :</label>
+                        <input class="form-control" type="text" placeholder="Username" ng-model="signUpUser.name">
+                    </div>
+                    <div class="form-group">
+                        <label>First name : </label>
+                        <input class="form-control" type="text" placeholder="First name" ng-model="signUpUser.first">
+                    </div>
+                    <div class="form-group ">
+                        <label>Last name :</label>
+                        <input class="form-control" type="text" placeholder="Last name"  ng-model="signUpUser.last">
+                    </div>
+                    <div class="form-group">
+                        <label>Email :</label>
+                        <input class="form-control" type="text" placeholder="Email" ng-model="signUpUser.mail">
+                    </div>
+                    <div class="form-group">
+                        <label>Password :</label>
+                        <input class="form-control" type="password" placeholder="Password" ng-model="signUpUser.pass">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password :</label>
+                        <input class="form-control" type="password" placeholder="Confirm Password" ng-model="signUpUser.repass">
+                    </div>
+                    <div class="form-group ml5">
+                        <button type="submit" class="btn btn-mymoney pull-right">Sign Up</button>
+                    </div>
+                </form>
+            </div>          
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="modal-login">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h1 class="modal-title">Log in</h1>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="center-block" style="max-width: 400px;">
+
+                    <a href="/auth/facebook" type="button" class="btn btn-lg btn-block facebook"><i class="fa fa-facebook-square"></i> <span>Login with Facebook</span></a>
+
+                    <a href="/auth/google" type="button" class="btn btn-lg btn-block google-p"><i class="fa fa-google-plus-square"></i> <span>Login with Google</span></a>
+                </div>
+
+                <div class="strike pt30">
+                    <span>OR</span>
+                </div>
+
+                <form class="nav">
+                    <p class="text-center text-danger">{{error}}</p>
+                    <div class="form-group">
+                        <label >Username :</label>
+                        <input type="text" class="form-control" placeholder="Username" ng-model="signInUser.username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password :</label>
+                        <input type="password" class="form-control" placeholder="Password" ng-model="signInUser.password">
+                    </div>
+                    <div class="form-group ml5">
+                        <button type="submit" class="btn btn-mymoney pull-right" ng-click="signIn()" data-dismiss="modal">Log in</button>
+                        <button type="button" class="btn btn-mymoney pull-right mt10" ui-sref="forgotpass" data-dismiss="modal">Forgot password</button>
+                    </div>
+                </form>
+            </div>          
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--
+<div id="sidebar-wrapper-left" class="menuSidebar">
+
+    <ul class="sidebar-nav">
+        <li hide-sidebar-menu ui-sref="settings" class="sidebar-left-element">
+            <span class="glyphicon glyphicon-user pr10" aria-hidden="true"></span>
+            {{user.username}}
+        </li>
+
+        <li hide-sidebar-menu ng-click="logout()" class="sidebar-left-element">
+            <span class="glyphicon glyphicon-off pr10" aria-hidden="true"></span>
+            Logout
+        </li>
+
+        <li>
+            <hr>
+        </li>
+
+        <li hide-sidebar-menu ui-sref="budget" class="sidebar-left-element">
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+            Budget
+        </li>
+
+        <li hide-sidebar-menu ui-sref="analysis" class="sidebar-left-element">
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+            Analysis
+        </li>
+
+        <li hide-sidebar-menu ng-if="account !== undefined" ui-sref="optPeriod({accountId : account._id})" class="sidebar-left-element">
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+            Periodics operations
+        </li>
+
+        <li hide-sidebar-menu ui-sref="accounts" class="sidebar-left-element">
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+            Accounts
+        </li>
+
+        <li ng-show="accounts.length > 0">
+            <hr>
+        </li>
+
+        <li ng-show="accounts.length > 0" class="sidebar-left-element-title">Accounts list</li>
+
+        <li ng-show="accounts.length > 0" hide-sidebar-menu ng-repeat="acc in accounts" class="sidebar-left-element">
+            <div class="row">
+                <div class="col-md-10" ui-sref="operation({accountId : acc._id})">
+                    <span ng-if="account._id!==acc._id">{{ acc.name }}</span>
+                    <b ng-if="account._id===acc._id">{{ acc.name }}</b>
+                </div>
+                <div class="col-md-2">
+                    <a ng-class="{selected: account._id===acc._id}" ui-sref="accountSettings({accountId : acc._id})" class="glyphicon glyphicon-cog pull-right" aria-hidden="true"></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+-->
+
+<div class="container pt70" style="margin-bottom: -70px" ng-if="$root.state === 'OFFLINE' && $root.showAlert">
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="dismissAlert()"><span aria-hidden="true">&times;</span></button>
+        <strong>Oh snap !</strong> Your connection with the server seems to be down. You can stay here and enjoy My Money but some features may be unavailable.
+    </div>
+</div>

@@ -3,8 +3,8 @@ module.exports = {
 		return db;
 	},
 
-	getContactModel : function(){
-		return contactModel;
+	getUserModel : function(){
+		return userModel;
 	}
 }
 
@@ -34,5 +34,16 @@ var contactSchema = new Schema({
   },
   {collection : 'splitwise' }
 );
+
+var UserSchema  = new Schema({
+	clientID: Number,
+	username: String,
+	lastName: String,
+	firstName: String,
+	email: String,
+	password: String,
+	token: String
+})
 var contactModel = mongoose.model('contact', contactSchema);
+var userModel = mongoose.model('user', UserSchema);
 
